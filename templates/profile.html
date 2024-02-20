@@ -1,0 +1,11 @@
+{% extends "base_side_bar.html" %}
+
+{% block title%}
+Profile
+{%endblock%}
+
+{%block content%}
+    <h1>Logado como {{request.user.username}}</h1>
+
+    <a href="{% url 'account_logout'%}">Logout</a>
+{%endblock%}

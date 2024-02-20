@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.main-singup {
+    width: 100vw;
+    height: 100vh;
+    background: #7FC8F8;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.right-singup {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.right-singup>h1 {
+    color: #FF6392;
+    font-size: 3vw;
+}
+
+.left-singup {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-singup {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px 35px;
+    background: #286c99;
+    border-radius: 20px;
+}
+
+.card-singup>h1 {
+    color: #FF6392;
+    font-weight: 800;
+    margin: 0;
+}
+
+.textfield {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px 0px;
+}
+
+input {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background: #FFE45E;
+    color: #00000056;
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px #00000056;
+    outline: none;
+    box-sizing: border-box;
+}
+
+label {
+    color: #f0ffffde;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 16px 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    background: #FF6392;
+    color: #000A12;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #FF6392;
+}
+
+ul {
+    font-weight: 700;
+    color: #F17105;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    margin: 5px 0px;
+}
+
+a {
+    font-weight: 500;
+    color: #f0ffffde;
+}
+
+a:hover {
+    font-weight: 500;
+    text-decoration: underline;
+    color: #FF6392;
+}
+
+.right-singup-image {
+    width: 35vw;
+}
