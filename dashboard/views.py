@@ -10,6 +10,7 @@ def profile(request):
 
 @login_required
 def calendar(request):
+    
     return render(request, 'calendar.html')
 
 def home(request):

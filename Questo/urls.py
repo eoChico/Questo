@@ -24,5 +24,7 @@ urlpatterns = [
     path('accounts/profile/', views.profile, name='profile'),
     path('accounts/flashcards/', views.flashcards, name='flashcards'),
     path('',views.home,name="home"),
+    path('accounts/calendar/', views.calendar, name='calendar'),
+
 
 ]
