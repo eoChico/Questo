@@ -1,0 +1,357 @@
+{% extends 'side_bar.html' %}
+{%block head%}
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 800px;
+        min-height: 400px;
+        margin: 0 auto;
+        padding: 5px;
+        display: flex;
+        border-radius: 5px;
+        background-color: #FF6392;
+    }
+
+    .left {
+        width: 60%;
+        padding: 20px;
+    }
+
+    .calendar {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        border-radius: 5px;
+        background-color: #7FC8F8;
+    }
+
+    .calendar .month {
+        width: 100%;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 50px;
+        font-size: 1.2rem;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+
+    .calendar .month .prev:hover,
+    .calendar .month .next:hover {
+        cursor: pointer;
+    }
+
+    .calendar .weekdays {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        font-size: 1rem;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+
+    .calendar .weekdays div {
+        width: 14.28%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .calendar .days {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 20px;
+        font-size: 1rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+
+    .calendar .days .day {
+        width: 14.28%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: 1px solid #f5f5f5;
+        transition: background-color 0.3s;
+    }
+
+    .calendar .days .day:hover:not(.today) {
+        background-color: #f5f5f5;
+    }
+
+    .calendar .days .today {
+        background-color: #FFE45E;
+    }
+
+    .calendar .days .active {
+        background-color: #FF6392;
+        position: relative;
+    }
+
+    .calendar .days .active::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 10px 2px #FF6392;
+    }
+
+    .calendar .days .event {
+        position: relative;
+    }
+
+    .calendar .day.event::after {
+        content: '';
+        position: absolute;
+        bottom: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 75%;
+        /* largura da barra */
+        height: 6px;
+        /* altura da barra */
+        background-color: #FFE45E;
+        /* cor da barra */
+        border-radius: 30px;
+        /* borda arredondada */
+    }
+
+    .container .right {
+        background-color: #FFE45E;
+        position: relative;
+        width: 40%;
+        min-height: 70%;
+    }
+
+    .right .today-date {
+        position: absolute;
+        width: 100%;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        text-transform: capitalize;
+        align-items: center;
+    }
+
+    .today-date .event-day {
+        font-size: 2rem;
+        font-weight: 500;
+    }
+
+    .calendar .days .inactive {
+        opacity: 0.5;
+        cursor: not-allowed;
+        /* Define a opacidade dos dias inativos */
+    }
+
+    .today-date .event-date {
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: #7FC8F8;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="left">
+        <div class="calendar">
+            <div class="month">
+                <i class="fa fa-angle-left prev"></i>
+                <div class="date">Março 2024</div>
+                <i class="fa fa-angle-right next"></i>
+            </div>
+            <div class="weekdays">
+                <div>Dom</div>
+                <div>Seg</div>
+                <div>Ter</div>
+                <div>Qua</div>
+                <div>Qui</div>
+                <div>Sex</div>
+                <div>Sáb</div>
+            </div>
+            <div class="days">
+                <div class="day">1</div>
+                <div class="day">2</div>
+                <div class="day">3</div>
+                <div class="day">4</div>
+                <div class="day">5</div>
+                <div class="day">6</div>
+                <div class="day">7</div>
+                <div class="day">8</div>
+                <div class="day">9</div>
+                <div class="day">10</div>
+                <div class="day">11</div>
+                <div class="day">12</div>
+                <div class="day">13</div>
+                <div class="day">14</div>
+                <div class="day ">15</div>
+                <div class="day">16</div>
+                <div class="day">17</div>
+                <div class="day ">18</div>
+                <div class="day">19</div>
+                <div class="day">20</div>
+                <div class="day">21</div>
+                <div class="day">22</div>
+                <div class="day">23</div>
+                <div class="day">24</div>
+                <div class="day">25</div>
+                <div class="day">26</div>
+                <div class="day ">27</div>
+                <div class="day">28</div>
+                <div class="day">29</div>
+                <div class="day">30</div>
+                <div class="day">31</div>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="today-date">
+            <div class="event-day"></div>
+            <div class="event-date"></div>
+        </div>
+    </div>
+</div>
+<script>
+       document.addEventListener("DOMContentLoaded", function () {
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        const dateElement = document.querySelector('.date');
+        const daysContainer = document.querySelector('.days');
+        const daysOfWeek = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+        const monthNames = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
+
+        renderCalendar(currentMonth, currentYear);
+
+        prevBtn.addEventListener('click', () => {
+            if (currentMonth === 0) {
+                currentMonth = 11;
+                currentYear -= 1;
+            } else {
+                currentMonth -= 1;
+            }
+            renderCalendar(currentMonth, currentYear);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentMonth === 11) {
+                currentMonth = 0;
+                currentYear += 1;
+            } else {
+                currentMonth += 1;
+            }
+            renderCalendar(currentMonth, currentYear);
+        });
+
+        daysContainer.addEventListener('click', (event) => {
+            const selectedDay = event.target;
+            const activeDay = document.querySelector('.day.active');
+
+            if (selectedDay.classList.contains('day') && !selectedDay.classList.contains('inactive') && !selectedDay.classList.contains('active')) {
+                if (activeDay) {
+                    activeDay.classList.remove('active');
+                }
+                selectedDay.classList.add('active');
+
+                // Obter o mês e o ano selecionados
+                const monthYear = document.querySelector('.date').textContent.split(' ');
+                const selectedMonth = monthYear[0];
+                const selectedYear = monthYear[1];
+
+                updateTodayDate(selectedDay.textContent, selectedMonth, selectedYear);
+            }
+        });
+
+        function updateTodayDate(selectedDate, selectedMonth, selectedYear) {
+            // Mapeando o nome do mês para o índice do mês no array monthNames
+            const monthIndex = monthNames.indexOf(selectedMonth);
+
+            // Criando a data com o índice do mês corrigido
+            const selectDate = new Date(selectedYear, monthIndex, selectedDate);
+
+            // Obtendo o nome do dia da semana da data específica
+            const currentDayOfWeekIndex = selectDate.getDay();
+            const currentDayOfWeek = daysOfWeek[currentDayOfWeekIndex];
+
+            const eventDayElement = document.querySelector('.event-day');
+            const eventDateElement = document.querySelector('.event-date');
+
+            eventDayElement.textContent = `${currentDayOfWeek}`;
+            eventDateElement.textContent = `${selectedDate} de ${selectedMonth} de ${selectedYear}`;
+        }
+
+        function renderCalendar(month, year) {
+            const firstDay = new Date(year, month).getDay();
+            const lastDay = new Date(year, month + 1, 0).getDate();
+            const today = new Date().getDate(); // Dia atual
+            const currentMonth = new Date().getMonth(); // Mês atual
+            const currentYear = new Date().getFullYear(); // Ano atual
+            const daysContainer = document.querySelector('.days');
+            const lastMonthLastDay = new Date(year, month, 0).getDate(); // Último dia do mês anterior
+
+            dateElement.textContent = `${monthNames[month]} ${year}`;
+            daysContainer.innerHTML = '';
+
+            // Adicionar dias do mês anterior
+            for (let i = firstDay - 1; i >= 0; i--) {
+                const day = document.createElement('div');
+                day.classList.add('day', 'inactive');
+                day.textContent = lastMonthLastDay - i;
+                daysContainer.appendChild(day);
+            }
+
+            // Adicionar dias do mês atual
+            for (let i = 1; i <= lastDay; i++) {
+                const day = document.createElement('div');
+                day.classList.add('day');
+                day.textContent = i;
+                if (i === today && month === currentMonth && year === currentYear) {
+                    day.classList.add('today');
+                }
+                daysContainer.appendChild(day);
+            }
+            const eventDayElement = document.querySelector('.event-day');
+            const eventDateElement = document.querySelector('.event-date');
+
+            const currentDate = new Date(currentYear,currentMonth,today);
+            const currentDayOfWeekIndex = currentDate.getDay();
+            const currentDayOfWeek = daysOfWeek[currentDayOfWeekIndex];
+
+            eventDayElement.textContent = `${currentDayOfWeek}`;
+            eventDateElement.textContent = `${today} de ${monthNames[currentMonth]} de ${currentYear}`;
+
+            // Adicionar dias do próximo mês
+            const remainingDays = 42 - (firstDay + lastDay); // Total de dias - (dias do mês atual + dias do mês anterior)
+            for (let i = 1; i <= remainingDays; i++) {
+                const day = document.createElement('div');
+                day.classList.add('day', 'inactive');
+                day.textContent = i;
+                daysContainer.appendChild(day);
+            }
+        }
+
+    });
+</script>
+
+
+{% endblock %}
