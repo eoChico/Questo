@@ -1,5 +1,5 @@
 from django import forms
-from .models import Deck, Flashcard
+from .models import Deck, Flashcard,Evento
 
 class DeckForm(forms.ModelForm):
     class Meta:
@@ -18,4 +18,14 @@ class FlashcardForm(forms.ModelForm):
             'deck': 'Deck',
             'pergunta': 'Pergunta',
             'resposta': 'Resposta',
+        }
+
+class EventoForm(forms.ModelForm):
+    class Meta:
+        model = Evento
+        fields = ['titulo', 'descricao', 'hora']
+        labels = {
+            'titulo': 'Título do Evento',
+            'descricao': 'Descrição do Evento',
+            'hora': 'Hora do Evento',
         }
