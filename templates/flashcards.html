@@ -1,0 +1,17 @@
+{% extends "side_bar.html" %}
+
+{% block title%}
+Flashcards
+{%endblock%}
+{%block content%}
+<div class="container">
+    <!-- Template para inserir um novo Deck -->
+    <form method="post">
+        {% csrf_token %}
+        {{ deck_form.as_p }}
+        <button type="submit">Salvar Deck</button>
+    </form>
+
+
+</div>
+{%endblock%}
